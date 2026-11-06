@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,11 +13,10 @@ def make_cor_plot(corr):
 
     df = pd.DataFrame({"x": x, "y": y})
 
-    # Calculate correlation
     r = round(df["x"].corr(df["y"]), 2)
 
-    # Create plot
-    plt.figure(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
+
     sns.set_theme(style="white", font_scale=1.2)
 
     sns.regplot(
@@ -25,12 +25,14 @@ def make_cor_plot(corr):
         y="y",
         ci=None,
         scatter_kws={"alpha": 0.6},
-        line_kws={"color": "blue"}
+        line_kws={"color": "blue"},
+        ax=ax
     )
 
-    plt.text(0, -1700, f"R = {r}", fontsize=15)
-    plt.xlabel("x")
-    plt.ylabel("y")
-    plt.tight_layout()
+    ax.text(0, -1700, f"R = {r}", fontsize=15)
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
 
-    plt.show()
+    fig.tight_layout()
+
+    return fig
