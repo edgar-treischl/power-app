@@ -7,7 +7,13 @@ authors = [
     { name = "edgar.treischl", email = "edgar.treischl@isb.bayern.de" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "marimo>=0.25.2",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
+    "seaborn>=0.13.2",
+]
 
 [project.scripts]
 power-app = "power_app:main"
